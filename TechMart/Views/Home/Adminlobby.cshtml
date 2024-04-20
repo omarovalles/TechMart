@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Admin Lobby";
+}
+
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/stylelobby.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Lobby</title>
+</head>
+<body>
+    <nav class="nav-container">
+       <a asp-controller="Home" asp-action="AdminLobby">Inicio</a>
+       <a asp-controller="Products" asp-action="Inventario">Productos</a>
+       <a asp-controller="Proveedores" asp-action="Proveedores">Proveedores</a>
+       <a asp-controller="Home" asp-action="Index">Log out</a>
+    </nav>
+
+    <div class="carrousel">
+        <div class="conteCarrousel">
+            <div class="itemCarrousel" id="itemCarrousel-1">
+                <div class="itemCarrouselTarjeta"></div>
+                <div class="itemCarrouselArrows">
+                    <a href="#itemCarrousel-3">
+                        <i class='bx bxs-chevron-left-circle'></i>
+                    </a>
+                    <a href="#itemCarrousel-2">
+                        <i class='bx bxs-chevron-right-circle'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="itemCarrousel" id="itemCarrousel-2">
+                <div class="itemCarrouselTarjeta"></div>
+                <div class="itemCarrouselArrows">
+                    <a href="#itemCarrousel-1">
+                        <i class='bx bxs-chevron-left-circle'></i>
+                    </a>
+                    <a href="#itemCarrousel-3">
+                        <i class='bx bxs-chevron-right-circle'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="itemCarrousel" id="itemCarrousel-3">
+                <div class="itemCarrouselTarjeta"></div>
+                <div class="itemCarrouselArrows">
+                    <a href="#itemCarrousel-2">
+                        <i class='bx bxs-chevron-left-circle'></i>
+                    </a>
+                    <a href="#itemCarrousel-1">
+                        <i class='bx bxs-chevron-right-circle'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

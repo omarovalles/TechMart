@@ -1,0 +1,97 @@
+﻿@model List<TechMart.Models.Productos>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link href="~/css/styleadmin-inventory.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <nav class="nav-container">
+        <a asp-controller="Home" asp-action="AdminLobby">Inicio</a>
+        <a asp-controller="Products" asp-action="Inventario">Productos</a>
+        <a asp-controller="Proveedores" asp-action="Proveedores">Proveedores</a>
+        <a asp-controller="Home" asp-action="Index">Log out</a>
+    </nav>
+    <div class="container">
+        <h1>PRODUCTOS</h1>
+        <div class="form-container">
+            <h2>Administrador</h2>
+            @using (Html.BeginForm("AgregarProducto", "Products", FormMethod.Post))
+	        {
+            <form>
+                <div class="form-group">
+                    <label for="product">Producto:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad:</label>
+                    <input type="number" id="stock" name="stock" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Precio:</label>
+                    <input type="number" id="precio" name="precio" required>
+                </div>
+                <div class="form-group-min">
+                    <label for="price">Descripcion:</label>
+                    <input type="text" id="descripcion" name="descripcion" min="0" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btnAgregar">Agregar Producto</button>
+                </div>
+            </form>
+            }
+        </div>
+        <div class="sales-list">
+            <h2>Lista de Productos</h2>
+                @if (Model != null)
+                {
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Descripcion</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var producto in Model)
+                            {
+                                <tr>
+                                    <td>@producto.ID</td>
+                                    <td>@producto.nombre</td>
+                                    <td>@producto.precio</td>
+                                    <td>@producto.stock</td>
+                                    <td>@producto.descripcion</td>
+                                <td>
+                                    <form method="post" action="@Url.Action("EliminarProducto", "Products")">
+                                        <input type="hidden" name="id" value="@producto.ID" />
+                                        <button type="submit" class="btnEliminar">Eliminar</button>
+                                    </form>
+                                <td>
+                                    <form method="post" action="@Url.Action("EditadoDeProductos", "Products")">
+                                        <input type="hidden" name="id" value="@producto.ID" />
+                                        <button type="submit" class="btnActualizar">Actualizar</button>
+                                    </form>
+                                </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No hay productos disponibles.</p>
+                }
+        </div>
+    </div>
+</body>
+</html>

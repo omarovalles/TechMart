@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+@model List<TechMart.Models.Proveedores>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedores</title>
+    <link href="~/css/styleproveedor.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <nav class="nav-container">
+        <a asp-controller="Home" asp-action="AdminLobby">Inicio</a>
+        <a asp-controller="Products" asp-action="Inventario">Productos</a>
+        <a asp-controller="Proveedores" asp-action="Proveedores">Proveedores</a>
+        <a asp-controller="Home" asp-action="Index">Log out</a>
+    </nav>
+    <div class="container">
+        <h1>PROVEEDORES</h1>
+        <div class="form-container">
+            <h2>Administrador</h2>
+            @using (Html.BeginForm("AgregarProveedor", "Proveedores", FormMethod.Post))
+            {
+                <form>
+                    <div class="form-group">
+                        <label for="product">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Direccion:</label>
+                        <input type="text" id="direccion" name="direccion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Telefono:</label>
+                        <input type="text" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group-min">
+                        <label for="price">Correo:</label>
+                        <input type="text" id="correo" name="correo" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btnAgregar">Agregar Proveedor</button>
+                    </div>
+                </form>
+            }
+        </div>
+        <div class="sales-list">
+            <h2>Lista de Proveedores</h2>
+            @if (Model != null)
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Contacto</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var proveedores in Model)
+                        {
+                            <tr>
+                                <td>@proveedores.ID</td>
+                                <td>@proveedores.nombre</td>
+                                <td>@proveedores.direccion</td>
+                                <td>@proveedores.telefono</td>
+                                <td>@proveedores.correo</td>
+                                <td>
+                                    <form method="post" action="@Url.Action("EliminarProveedor", "Proveedores")">
+                                        <input type="hidden" name="id" value="@proveedores.ID" />
+                                        <button type="submit" class="btnEliminar">Eliminar</button>
+                                    </form>
+                                <td>
+                                    <form method="post" action="@Url.Action("EditadoDeProveedores", "Proveedores")">
+                                        <input type="hidden" name="id" value="@proveedores.ID" />
+                                        <button type="submit" class="btnActualizar">Actualizar</button>
+                                    </form>
+                                </td>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No hay proveedores disponibles.</p>
+            }
+        </div>
+    </div>
+</body>
+</html>

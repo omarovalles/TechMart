@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-container {
+    background-color: #272727;
+    width: 100%;
+    height: 35px;
+}
+
+.nav-container a {
+   color: #fff;
+   text-decoration: none;
+   padding:30px
+}
+
+.nav-container a:hover {
+   color: #D58700;
+}
+
+
+.nav-container label {
+    display: inline;
+    color: #FF8000;
+    margin-right: 300px;
+}
+
+
+.carrousel {
+    width:100%;
+}
+
+.conteCarrousel {
+    width: 100%;
+    height: 708px;
+    overflow: hidden;
+}
+
+.itemCarrousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.itemCarrouselTarjeta {
+    width: 100%;
+    height: 100%;
+}
+
+.itemCarrouselArrows {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+    .itemCarrouselArrows > i:hover {
+        cursor: pointer;
+    }
+
+#itemCarrousel-1 {
+    background: url(imglaptop2.png) no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#itemCarrousel-2 {
+    background: url(imglaptop.jpg)no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#itemCarrousel-3 {
+    background: url(city.jpg) no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.conteCarrouselController {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.conteCarrouselController > a {
+   text-decoration: none;
+   font-size: 2em;
+   color: grey;
+}
+
+.itemCarrouselArrows > a > i {
+    color: white;
+}
